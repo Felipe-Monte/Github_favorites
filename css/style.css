@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  height: 100vh;
+  max-width: 100vw;
+
+  font-size: 1.6rem;
+  background: #000000;
+}
+
+#app {
+  margin: 0 auto;
+  padding-top: 2rem;
+
+  max-width: 70rem;
+  height: fit-content;
+
+  /* border: 1px solid red; */
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 5rem;
+
+  color: white;
+}
+
+header .wrapper-input input {
+  padding: 1.6rem;
+  width: 30rem;
+  height: 4.8rem;
+
+  color: white;
+  background: #06181C;
+  border-radius: 5px;
+  border: none;
+}
+
+header .wrapper-input button {
+  width: 10rem;
+  height: 4.8rem;
+
+  background: #065E7C;
+  border-radius: 5px;
+  color: white;
+  border: none;
+
+  cursor: pointer;
+  transition: all .5s ease;
+}
+
+header .wrapper-input button:hover {
+  background: white;
+  color: #065E7C;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table thead {
+  background-color: #0d4353;
+  color: white;
+
+}
+
+table thead th:first-child {
+  border-top-left-radius: 1rem;
+}
+
+table thead th:last-child {
+  border-top-right-radius: 1rem;
+}
+
+
+table tbody tr:nth-child(odd) {
+  background: #06161B;
+}
+
+table tbody tr:nth-child(even) {
+  background: #0b2d35;
+}
+
+table thead th {
+  padding: 1.6rem 1rem;
+  text-align: left;
+}
+
+table td {
+  padding: 1rem;
+  color: white;
+  /* border: 1px solid white; */
+}
+
+td:first-child {
+  width: 300px
+}
+
+table .user {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 1.6rem;
+}
+
+table .user img {
+  width: 5.6rem;
+  height: 5.6rem;
+
+  border-radius: 50%;
+}
+
+table tbody a {
+  text-decoration: none;
+  color: white;
+}
+
+table tbody .action button {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 160%;
+
+  color: #F75A68;
+  background-color: transparent;
+
+  border: none;
+}
+
+table tbody .action button:hover {
+  cursor: pointer;
+}
