@@ -18,12 +18,14 @@ export class Favorites {
   constructor(root) {
     this.root = document.querySelector(root)
     this.load()
-
-    GithubUser.search("Jonas").then(user => console.log(user))
   }
 
   load() {
     this.entries = localStorage.getItem('@github-favorites:') || []
+  }
+
+  async add(username) {
+    const user = await GithubUser.search(username)
   }
 
   delete(user) {
@@ -39,6 +41,16 @@ export class FavoritesViwer extends Favorites {
   constructor(root) {
     super(root)
     this.update()
+    this.onadd()
+  }
+
+  onadd() {
+    const btn = this.root.querySelector('header button')
+    btn.onclick = () => {
+      const { value } = this.root.querySelector('header input')
+      
+      this.add(value)
+    }
   }
 
   update() {
