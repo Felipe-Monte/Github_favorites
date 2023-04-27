@@ -85,7 +85,6 @@ table thead th:last-child {
   border-top-right-radius: 1rem;
 }
 
-
 table tbody tr:nth-child(odd) {
   background: #06161B;
 }
