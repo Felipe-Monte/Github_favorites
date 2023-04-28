@@ -21,11 +21,34 @@ export class Favorites {
   }
 
   load() {
-    this.entries = localStorage.getItem('@github-favorites:') || []
+    this.entries = JSON.parse(localStorage.getItem('@github-favorites:')) || []
+  }
+
+  save() {
+    localStorage.setItem('@github-favorites:', JSON.stringify(this.entries))
   }
 
   async add(username) {
-    const user = await GithubUser.search(username)
+    try {
+      const userExist = this.entries.find(entry => entry.login === username)
+
+      if (userExist) {
+        throw new Error("Usuário ja cadastrado!")
+      }
+
+      const user = await GithubUser.search(username)
+
+      if (user.login === undefined) {
+        throw new Error("Usuário não encontrado!")
+      }
+
+      this.entries = [user, ...this.entries]
+      this.update()
+      this.save()
+
+    } catch (error) {
+      alert(error.message)
+    }
   }
 
   delete(user) {
@@ -34,6 +57,7 @@ export class Favorites {
     //colocando um novo array, após verificar o resultado acima 
     this.entries = filteredEntries
     this.update()
+    this.save()
   }
 }
 
@@ -48,7 +72,7 @@ export class FavoritesViwer extends Favorites {
     const btn = this.root.querySelector('header button')
     btn.onclick = () => {
       const { value } = this.root.querySelector('header input')
-      
+
       this.add(value)
     }
   }
@@ -63,10 +87,10 @@ export class FavoritesViwer extends Favorites {
       const tbody = document.querySelector('table tbody')
       const tr = this.createTr()
 
-      tr.querySelector('.user img').src = `https://github.com/${user.name}.png`
+      tr.querySelector('.user img').src = `https://github.com/${user.login}.png`
       tr.querySelector('.user p').innerHTML = `${user.name}`
       tr.querySelector('.user span').innerHTML = `${user.login}`
-      tr.querySelector('.repositories').innerHTML = `${user.public_repor}`
+      tr.querySelector('.repositories').innerHTML = `${user.public_repos}`
       tr.querySelector('.followers').innerHTML = `${user.followers}`
 
       tr.querySelector('.remove').onclick = () => {
