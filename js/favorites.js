@@ -133,5 +133,4 @@ export class FavoritesViwer extends Favorites {
       row.remove()
     })
   }
-
 }
