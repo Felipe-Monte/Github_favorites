@@ -88,10 +88,10 @@ export class FavoritesViwer extends Favorites {
       const tr = this.createTr()
 
       tr.querySelector('.user img').src = `https://github.com/${user.login}.png`
-      tr.querySelector('.user p').innerHTML = `${user.name}`
-      tr.querySelector('.user span').innerHTML = `${user.login}`
-      tr.querySelector('.repositories').innerHTML = `${user.public_repos}`
-      tr.querySelector('.followers').innerHTML = `${user.followers}`
+      tr.querySelector('.user p').textContent = `${user.name}`
+      tr.querySelector('.user span').textContent = `${user.login}`
+      tr.querySelector('.repositories').textContent = `${user.public_repos}`
+      tr.querySelector('.followers').textContent = `${user.followers}`
 
       tr.querySelector('.remove').onclick = () => {
         let isOk = confirm("Deseja deletar ?")
